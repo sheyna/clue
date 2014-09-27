@@ -1,4 +1,4 @@
-// Set up cards
+// Set up the cards
 function CardList(list, cardTitle, card2ndClass) {
   this.list = list; // card IDs
   this.cardTitle = cardTitle; // card titles
@@ -14,23 +14,26 @@ function CardList(list, cardTitle, card2ndClass) {
   };
 }
 
+// the suspect "who" cards:
 var who = new CardList(["person0", "person1",
   "person2", "person3", "person4", "person5"],
   ["Mr. Green", "Mrs. Peacock", "Prof. Plum",
   "Miss Scarlet", "Col. Mustard", "Mrs. White"], "person");
 
+// the weapon "what" cards:
 var what = new CardList(["weapon0", "weapon1",
   "weapon2", "weapon3", "weapon4", "weapon5"],
   ["Dagger", "Rope", "Candlestick",
   "Revolver", "Wrench", "Lead Pipe"], "weapon");
 
+// the room "where" cards:
 var where = new CardList(["room0", "room1", "room2",
   "room3", "room4", "room5", "room6", "room7", "room8"],
   ["Dining Room", "Kitchen", "Ballroom",
   "Billiard Room", "Conservatory", "Library",
   "Lounge", "Study", "Hall"], "room");
 
-// Creates cards:
+// Calls the command to create the cards:
 who.createHTML();
 what.createHTML();
 where.createHTML();
@@ -42,7 +45,7 @@ whoNumber = Math.floor(Math.random() * who.list.length);
 whatNumber = Math.floor(Math.random() * what.list.length);
 whereNumber = Math.floor(Math.random() * where.list.length);
 
-// Sets up players: user and computer answers:
+// Sets up players: 1.) user and 2.) computer answers:
 function Player(who, what, where, whoTitle, whatTitle, whereTitle) {
   this.who = who;
   this.what = what;
@@ -52,18 +55,19 @@ function Player(who, what, where, whoTitle, whatTitle, whereTitle) {
   this.whereTitle = whereTitle;
 }
 
+// The user's guesses will be stored here:
 var user = new Player();
+
+// The computer's answers will be stored here:
 var answers = new Player(who.list[whoNumber], what.list[whatNumber],
   where.list[whereNumber], who.cardTitle[whoNumber],
   what.cardTitle[whatNumber], where.cardTitle[whereNumber]);
 
-// To test game:
-console.log("the answers are " + answers.who + answers.what + " and " + answers.where);
-
-// Variables and functions to determine status of the user's guesses:
+// Variables holding the status of the user's guesses:
 var whoWrong, whatWrong, whereWrong;
 var whoRight, whatRight, whereRight;
 
+// Function declaration to determine status of user's guesses:
 var compareWho = function() {
   if (user.who == answers.who) {
     whoWrong = false;
@@ -94,9 +98,9 @@ var compareWhere = function() {
   }
 };
 
-var eliminated = []; // Array stores eliminated guesses
+var eliminated = []; // Array stores user's eliminated guesses
 
-// Adds eliminated guesses to an array:
+// Function declaration to add user's eliminated guesses to the array:
 var addToEliminated = function() {
   if (whoWrong) {
     eliminated.push(user.who);
@@ -109,7 +113,7 @@ var addToEliminated = function() {
   }
 }; // End addToEliminated function declaration
 
-// Declare Gray out eliminated card function:
+// Function declaration to gray out eliminated cards:
 var grayOut = function() {
   $('li.card').each(function() {
     if ($.inArray($(this).attr('id'), eliminated) > -1) {
@@ -122,13 +126,12 @@ var grayOut = function() {
 
 // Function declaration to fade in cards
 var fadeInCards = function() {
-  $li = $('li');
-  $li.hide().each(function(index) {
+  $('li').hide().each(function(index) {
     $(this).delay(100 * index).fadeIn(700);
   });
 };
 
-// Function declaration for main card page display (with the question and lists):
+// Function declaration to put cards into layout with the related question
 var mainCardDisplay = function(question, cardListOutPut) {
   $('.choices').prepend('<ol class="currentDisplay"><li class="questions" \
     >' + question + '</li><ul>' + cardListOutPut + '</ul></ol>');
@@ -139,13 +142,13 @@ var mainCardDisplay = function(question, cardListOutPut) {
 // Stores html for individual answer cards:
 var whoAnswerPrintOut, whatAnswerPrintOut, whereAnswerPrintOut;
 
-// Creates base card display for user guess and and answers
+// Function declaration to creates base card display for user guess and and answers
 var answerGuessDisplay = function(cardClass, answerGuessID, answerGuessTitle, answerGuessPrinted) {
   return '<li class="' + cardClass + '" id="' + answerGuessID + '" \
-  title="' + answerGuessTitle + '">' + answerGuessPrinted + '</li>';
+    title="' + answerGuessTitle + '">' + answerGuessPrinted + '</li>';
 };
 
-// Creates HTML for all individual answers cards:
+// Function declaration to creates HTML for all individual answers cards:
 var createAnswerCards = function() {
   if (whoWrong) {
     whoAnswerPrintOut = answerGuessDisplay("card-answers", "personhidden", "incorrect: try again", "&nbsp;");
@@ -164,13 +167,12 @@ var createAnswerCards = function() {
   } else {
     whereAnswerPrintOut = answerGuessDisplay("card-answers", answers.where, answers.whereTitle, answers.whereTitle);
   }
-
 };
 
 // Stores html for individual guess cards:
 var whoGuessPrintOut, whatGuessPrintOut, whereGuessPrintOut;
 
-// Creates HTML for all individual guess cards:
+// Function declaration to creates HTML for all individual guess cards:
 var createGuessCards = function() {
   whoGuessPrintOut = answerGuessDisplay("card-guessed", user.who, user.whoTitle, user.whoTitle);
   whatGuessPrintOut = answerGuessDisplay("card-guessed", user.what, user.whatTitle, user.whatTitle);
@@ -178,11 +180,10 @@ var createGuessCards = function() {
 };
 
 // Counter for number of user's guess attemps:
-var numberOfAttempts = 0;
+var numberOfAttempts = 1; // Is added to when user clicks "Guess Again"
 
-// Creates and prints HTML for entire answer-guess card display:
+// Function declaration to creates and print HTML for entire answer page display:
 var printAnswersGuesses = function() {
-  numberOfAttempts += 1;
   $('.choices').prepend('<ol class="answerDisplay"><div class="choices-correct">\
     <div class="attempts">Attempts:\
     ' + numberOfAttempts + '</div><ol>\
@@ -196,32 +197,15 @@ var printAnswersGuesses = function() {
     </ul></ol>');
 };
 
-// answer page display with all functions
-var answerPageDisplay = function() {
-  compareWho(); // check user guesses
-  compareWhat();
-  compareWhere();
+// GUESS AGAIN FUNCTION DECLARATIONS:
 
-  createAnswerCards(); // creates answer cards
-  createGuessCards(); // creates guess cards
-
-  printAnswersGuesses(); // print cards out
-  fadeInCards(); // Fades-in guess and answer cards
-  addToEliminated(); // Adds eliminated guesses to an array
-
-  // New Game button, reloads entire page to start over:
-  $('button.new-game').on('click', function() {
-    location.reload();
-  });
-};
-
-// GUESS AGAIN FUNCTIONS:
-
+// ----------GUESS AGAIN BUTTONS------------
 // Shows Weapon guess again button; hides all others
 var showWeaponAgainButton = function() {
+  $('section.guessAgainButtons').show(); // shows Guess Again buttons
   $('button.guessAgainWeapons').show();
   $('button.guessAgainRooms').hide();
-  $('button.guessAgainAnswers').hide();
+  $('button.checkanswers').hide();
   $('section.answerPageButtons').hide();
 };
 
@@ -229,7 +213,7 @@ var showWeaponAgainButton = function() {
 var showRoomAgainButton = function() {
   $('button.guessAgainWeapons').hide();
   $('button.guessAgainRooms').show();
-  $('button.guessAgainAnswers').hide();
+  $('button.checkanswers').hide();
   $('section.answerPageButtons').hide();
 };
 
@@ -237,22 +221,13 @@ var showRoomAgainButton = function() {
 var showAnswersAgainButton = function() {
   $('button.guessAgainWeapons').hide();
   $('button.guessAgainRooms').hide();
-  $('button.guessAgainAnswers').show();
+  $('button.checkanswers').show();
   $('section.answerPageButtons').hide();
 };
 
-// Shows answer page Guess Again and new game buttons; hides all others
-var showGuessAgainNewGameButtons = function() {
-  $('button.guessAgainWeapons').hide();
-  $('button.guessAgainRooms').hide();
-  $('button.guessAgainAnswers').hide();
-  $('section.answerPageButtons').show();
-  $('ol').remove('.currentDisplay'); // hides previous display
-};
-
+// ----------GUESS AGAIN PAGE DISPLAYS------------
 // Guess again: who
 var guessAgainWho = function() {
-  $('ol').remove('.currentDisplay'); // hides previous display
   mainCardDisplay("Who Killed Mr. Body?", who.output);
   grayOut(); // Gray out eliminated cards
   fadeInCards(); // fade in what display
@@ -301,14 +276,12 @@ var guessAgainWhere = function() {
   });
 };
 
+// ----------GUESS AGAIN IF-ELSE LOOPs------------
 // Guess again where circumlocutors
 var guessAgainWhereLoop = function() {
   if (whereWrong) {
     guessAgainWhere();
     showAnswersAgainButton(); // shows answer button; hides all others
-  } else {
-    showGuessAgainNewGameButtons(); // shows guess again & new game button; hides all others
-    answerPageDisplay(); // show answers page display and run functions
   }
 }; // End guessAgainWhereLoop
 
@@ -341,18 +314,18 @@ var guessAgainWhoLoop = function() {
   }
 }; // end guessAgainWhoLoop
 
-/////////////// START DISPLAY:
+/////////////// START DISPLAY///////////////////////////
 
 // Start Who display:
 $(document).ready(function() {
   fadeInCards(); // fade in opening display
-  $('button.guessweapons').show(); // hide What button
+  $('button.guessweapons').show(); // show What button
   $('button.guessrooms').hide(); // hide Where button
-  $('button.checkanswers').hide(); // hide answers button
-  $('section.answerPageButtons').hide(); // hide Where
-  $('section.guessAgainButtons').hide(); // hide Where
+  $('button.checkanswers').hide(); // hide Answers button
+  $('section.answerPageButtons').hide(); // hide answer-page buttons
+  $('section.guessAgainButtons').hide(); // hide guess-again buttons
 
-  // Records user Who guess:
+  // Records user's "Who" guess:
   $('li.person').on('click', function() {
     user.who = $(this).attr('id');
     user.whoTitle = $(this).attr('title');
@@ -360,20 +333,20 @@ $(document).ready(function() {
       'border': '2px solid #e48d68'
     });
   });
-}); // End start Who display
+}); // End Who display
 
 // Who > What:
 $('button.guessweapons').on('click', function() {
-  $('ol').remove('.currentDisplay'); // removes who display
-  mainCardDisplay("Mr. Body Was Killed With What?", what.output);
+  $('ol').remove('.currentDisplay'); // removes Who display
+  mainCardDisplay("Mr. Body Was Killed With What?", what.output); // What display
   $('button.guessweapons').hide(); // hide What button
-  $('button.guessrooms').show(); // hide Where button
-  $('button.checkanswers').hide(); // hide answers button
-  $('section.answerPageButtons').hide(); // hide Where
-  $('section.guessAgainButtons').hide(); // hide Where
-  fadeInCards(); // fade in what display
+  $('button.guessrooms').show(); // show Where button
+  $('button.checkanswers').hide(); // hide Answers button
+  $('section.answerPageButtons').hide(); // hide answer-page buttons
+  $('section.guessAgainButtons').hide(); // hide guess-again buttons
+  fadeInCards(); // fade in What display
 
-  // Records user "What" guess:
+  // Records user's "What" guess:
   $('li.weapon').on('click', function() {
     user.what = $(this).attr('id');
     user.whatTitle = $(this).attr('title');
@@ -385,16 +358,16 @@ $('button.guessweapons').on('click', function() {
 
 // What > Where:
 $('button.guessrooms').on('click', function() {
-  $('ol').remove('.currentDisplay'); // removes what
+  $('ol').remove('.currentDisplay'); // removes What display
   mainCardDisplay("Where Was Mr. Body Was Killed?", where.output);
   $('button.guessweapons').hide(); // hide What button
   $('button.guessrooms').hide(); // hide Where button
-  $('button.checkanswers').show(); // hide answers button
-  $('section.answerPageButtons').hide(); // hide Where
-  $('section.guessAgainButtons').hide(); // hide Where
-  fadeInCards(); // fade in where display
+  $('button.checkanswers').show(); // show Answers button
+  $('section.answerPageButtons').hide(); // hide answer-page buttons
+  $('section.guessAgainButtons').hide(); // hide guess-again buttons
+  fadeInCards(); // fade in Where display
 
-  // Records user "Where" guess:
+  // Records user's "Where" guess:
   $('li.room').on('click', function() {
     user.where = $(this).attr('id');
     user.whereTitle = $(this).attr('title');
@@ -406,32 +379,48 @@ $('button.guessrooms').on('click', function() {
 
 // Where > Answers:
 $('button.checkanswers').on('click', function() {
-  $('ol').remove('.currentDisplay'); // removes where
-  $('section').remove('.firstSetButtons'); // remove first set of buttons
-  $('section.answerPageButtons').show(); // hide What
-  $('section.guessAgainButtons').hide(); // hide Where
+  $('ol').remove('.currentDisplay'); // removes Where display
+  $('section').remove('.firstSetButtons'); // removes first set of buttons
+  $('section.answerPageButtons').show(); // shows answer-page button
+  $('section.guessAgainButtons').hide(); // hide guess-again buttons
 
-  answerPageDisplay();
+  compareWho(); // check user's guesses
+  compareWhat();
+  compareWhere();
+
+  createAnswerCards(); // creates answer cards
+  createGuessCards(); // creates guess cards
+
+  printAnswersGuesses(); // print cards out
+  fadeInCards(); // Fades-in guess and answer cards
+  addToEliminated(); // Adds eliminated guesses to an array
+
+  if (whoRight && whatRight && whereRight) {
+    $('.choices').append('<h3>You Solved the Mystery!</h3>');
+    $('button.guess-again').hide();
+  }
 
 }); // End Where > Answers
 
-// GUESS AGAIN:
+// New Game button, reloads entire page to start over:
+$('button.new-game').on('click', function() {
+  location.reload();
+});
+
+// START GUESS AGAIN LOOPS:
 $('button.guess-again').on('click', function() {
   $('ol').remove('.answerDisplay'); // Removes answer display
-  $('section.guessAgainButtons').show(); // shows Guess Again buttons
-  guessAgainWhoLoop();
+  $('section.guessAgainButtons').show(); // Shows guess-again buttons
+  numberOfAttempts += 1; // Adds a number to the number of attempts
+
+  guessAgainWhoLoop(); // Allows user to guess again "Who"
 
   $('button.guessAgainWeapons').on('click', function() {
-      guessAgainWhatLoop();
+      guessAgainWhatLoop(); // Allows user to guess again "What"
     });
 
   $('button.guessAgainRooms').on('click', function() {
-      guessAgainWhereLoop();
-    });
-
-  $('button.guessAgainAnswers').on('click', function() {
-      showGuessAgainNewGameButtons(); // shows guess again & new game button; hides all others
-      answerPageDisplay(); // show answers page display and run functions
+      guessAgainWhereLoop(); // Allows user to guess again "Where"
     });
 
 }); // End Guess Again

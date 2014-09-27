@@ -1,4 +1,4 @@
-body {
+body {  /* the stripes down the left and right side */
   background-color: #e2e1c7; /* dark Cream */
   margin: 0;
   padding: 0;
@@ -6,7 +6,7 @@ body {
   outline: 0;
   vertical-align:baseline;
 }
-button {
+button { /* the default button design */
   font-family: Verdana, Geneva, sans-serif;
   font-size: 14px;
   color: #ffffff;
@@ -21,7 +21,7 @@ button {
   margin-top: 0px;
   margin-bottom: 120px;
 }
-button.guess-again {
+button.guess-again { /* Bigger Guess-Again button on the answer page:; less margin-bottom */
   font-size: 16px;
   height: 40px;
   width: 180px;
@@ -29,10 +29,10 @@ button.guess-again {
   margin-top: 10px;
   margin-bottom: 20px;
 }
-button.new-game {
+button.new-game { /* red button on answer page */
   background-color: #9c4d25; /* dark red */
 }
-h1 { /* Header Title */
+h1 { /* Page Title:; "Clue" */
   font-family: Verdana, Geneva, sans-serif;
   font-size: 156px;
   margin-top: 5px;
@@ -42,7 +42,7 @@ h1 { /* Header Title */
   color: #ffffff;
   letter-spacing: 1px;
 }
-h2 {
+h2 { /* Page Subhead:; "The Who Done It ..." */
   font-family: Verdana, Geneva, sans-serif;
   font-size: 22px;
   font-weight: normal;
@@ -51,25 +51,35 @@ h2 {
   letter-spacing: 0px;
   margin: 0;
 }
-hr {
+h3 { /* Victory congratulations message */
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 24px;
+  text-align: left;
+  color: #4e4c3d; /* brown */
+  font-weight: bold;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+hr { /* dashed line at the bottom of the header masthead */
   border: 3px dashed #737267; /* light brown */
   height: 0px;
   width: 100%;
   margin-top: 20px;
 }
-ul {
+ul { /* The cards' framework */
   list-style-type: none;
   margin-left: 0px;
   margin-bottom: 20px;
   padding: 0px;
 }
-ol {
+ol { /* The questions and the cards' framework */
   list-style-type: none;
   margin-left: 0px;
   margin-bottom: 0px;
   padding: 0px;
 }
-li.questions {
+li.questions { /* the questions under the <ol> */
   font-family: Verdana, Geneva, sans-serif;
   font-size: 18px;
   text-align: left;
@@ -80,6 +90,8 @@ li.questions {
   margin-left: 70px;
   margin-bottom: 20px;
 }
+
+/* ALL THE CARDS */
 
 /* People */
 #person0 {
@@ -100,7 +112,7 @@ li.questions {
 #person5 {
   background-image: url('../images/person5.jpg');
 }
-#personhidden {
+#personhidden { /* if user guess is incorrect */
   background-image: url('../images/envelope.jpg');
   border-color: #ecce80;
 }
@@ -124,7 +136,7 @@ li.questions {
 #weapon5 {
   background-image: url('../images/weapon5.jpg');
 }
-#weaponhidden {
+#weaponhidden { /* if user guess is incorrect */
   background-image: url('../images/envelope.jpg');
   border-color: #ecce80;
 }
@@ -157,12 +169,13 @@ li.questions {
 #room8 {
   background-image: url('../images/room8.jpg');
 }
-#roomhidden {
+#roomhidden { /* if user guess is incorrect */
   background-image: url('../images/envelope.jpg');
   border-color: #ecce80;
 }
 
-#area { /* This the large content area */
+
+#area { /* This is the large content area */
   position: relative;
   background-color: #eeeee0; /* light Cream */
   margin-top: 0px;
@@ -175,7 +188,7 @@ li.questions {
   height: 110%;
   box-shadow: 0px 0px 60px #bdbc98;
 }
-.attempts {
+.attempts { /* Attempts box in upper right of answer page */
   float: right;
   width: 150px;
   margin-right: 40px;
@@ -188,7 +201,7 @@ li.questions {
   background-color: #e2e1c7; /* dark Cream */
   border: 6px solid #e2e1c7; /* dark Cream */
 }
-.card {
+.card { /* the base card design */
   font-family: Verdana, Geneva, sans-serif;
   font-size: 18px;
   text-align: center;
@@ -205,10 +218,10 @@ li.questions {
   box-shadow: 0px 0px 60px #bdbc98;
   border: 2px solid #ffffff;
 }
-.card:hover {
+.card:hover { /* cards brown highlight border */
   border: 2px solid #737267;
 }
-.card-guessed {
+.card-guessed { /* Answer page display card guesses */
   font-family: Verdana, Geneva, sans-serif;
   font-size: 12.5px;
   z-index: 4;
@@ -226,7 +239,7 @@ li.questions {
   box-shadow: 0px 0px 60px #bdbc98;
   border: 2px solid #ffffff;
 }
-.card-answers {
+.card-answers { /* Answer page display card answers */
   font-family: Verdana, Geneva, sans-serif;
   font-size: 18px;
   text-align: center;
@@ -242,19 +255,19 @@ li.questions {
   box-shadow: 0px 0px 60px #bdbc98;
   border: 2px solid #ffffff;
 }
-.choices {
+.choices { /* box that holds all the cards questions answers and buttons */
   position: relative;
   display: inline-block;
   margin-bottom: 50px;
 }
-.choices-correct {
+.choices-correct { /* On answer page: box that holds all the answer cards */
   position: relative;
   display: inline-block;
   width: 550px;
   float: right;
   margin-bottom: 0px;
 }
-#glass {
+#glass { /* magnifying class in the upper left of browser */
   background-image: url('../images/mglass.png');
   background-repeat: no-repeat;
   background-position: -150px -100px;
@@ -262,7 +275,7 @@ li.questions {
   height: 500px;
   margin-top: -250px;
 }
-.header {
+.header { /* Brown masthead display */
   position: relative;
   z-index: 2;
   background-color: #4e4c3d; /* brown */
