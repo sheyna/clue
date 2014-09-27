@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clue: The Who Done It Guessing Game</title>
+  <link rel="stylesheet" type="text/css" href="css/cluestyle.css">
+</head>
+<body>
+  <header role="banner" class="header">
+
+      <h1 role="site name">Clue</h1>
+      <h2 role="site name">The Who Done It Guessing Game</h2>
+      <hr />
+
+      <div id="glass"></div>
+
+  </header>
+
+    <div id="area">
+
+      <div class="choices">
+
+        <ol class="whoDisplay currentDisplay">
+          <li class="questions" id="who">Who Killed Mr. Body?</li>
+
+          <ul class="who">
+            <li class="card person" id="person0" title="Mr. Green">
+              Mr. Green</li>
+            <li class="card person" id="person1" title="Mrs. Peacock">
+              Mrs. Peacock</li>
+            <li class="card person" id="person2" title="Prof. Plum">
+              Prof. Plum</li>
+            <li class="card person" id="person3" title="Miss Scarlet">
+              Miss Scarlet</li>
+            <li class="card person" id="person4" title="Col. Mustard">
+              Col. Mustard</li>
+            <li class="card person" id="person5" title="Mrs. White">
+              Mrs. White</li>
+          </ul>
+
+        </ol>
+
+        <section class="firstSetButtons">
+          <button class="guessweapons">
+            Next Guess
+          </button>
+          <button class="guessrooms">
+            Next Guess
+          </button>
+          <button class="checkanswers">
+            Check Answers
+          </button>
+        </section>
+
+        <section class="answerPageButtons">
+          <button class="guess-again">
+            Guess Again
+          </button>
+          <button class="new-game">
+            New Game
+          </button>
+        </section>
+
+        <section class="guessAgainButtons">
+          <button class="guessAgainWeapons">
+            Next Guess
+          </button>
+          <button class="guessAgainRooms">
+            Next Guess
+          </button>
+          <button class="guessAgainAnswers">
+            Check Answers
+          </button>
+        </section>
+      </div> <!-- Closes "choices" -->
+
+    </div> <!-- Closes "area" -->
+
+  <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+  <script type="text/javascript" src="js/cluescript.js"></script>
+
+</body>
+</html>

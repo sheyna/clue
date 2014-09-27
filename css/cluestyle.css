@@ -1,0 +1,277 @@
+body {
+  background-color: #e2e1c7; /* dark Cream */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align:baseline;
+}
+button {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #4e4c3d; /* brown */
+  height: 30px;
+  width: 150px;
+  position: relative;
+  float: right;
+  display: inline-block;
+  margin-left: 780px;
+  margin-right: 20px;
+  margin-top: 0px;
+  margin-bottom: 120px;
+}
+button.guess-again {
+  font-size: 16px;
+  height: 40px;
+  width: 180px;
+  margin-left: 750px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+button.new-game {
+  background-color: #9c4d25; /* dark red */
+}
+h1 { /* Header Title */
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 156px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 100%;
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+h2 {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 22px;
+  font-weight: normal;
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 0px;
+  margin: 0;
+}
+hr {
+  border: 3px dashed #737267; /* light brown */
+  height: 0px;
+  width: 100%;
+  margin-top: 20px;
+}
+ul {
+  list-style-type: none;
+  margin-left: 0px;
+  margin-bottom: 20px;
+  padding: 0px;
+}
+ol {
+  list-style-type: none;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+li.questions {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 18px;
+  text-align: left;
+  font-style: italic;
+  font-weight: normal;
+  color: #4e4c3d;
+  letter-spacing: 1px;
+  margin-left: 70px;
+  margin-bottom: 20px;
+}
+
+/* People */
+#person0 {
+  background-image: url('../images/person0.jpg');
+}
+#person1 {
+  background-image: url('../images/person1.jpg');
+}
+#person2 {
+  background-image: url('../images/person2.jpg');
+}
+#person3 {
+  background-image: url('../images/person3.jpg');
+}
+#person4 {
+  background-image: url('../images/person4.jpg');
+}
+#person5 {
+  background-image: url('../images/person5.jpg');
+}
+#personhidden {
+  background-image: url('../images/envelope.jpg');
+  border-color: #ecce80;
+}
+
+/* Weapons */
+#weapon0 {
+  background-image: url('../images/weapon0.jpg');
+}
+#weapon1 {
+  background-image: url('../images/weapon1.jpg');
+}
+#weapon2 {
+  background-image: url('../images/weapon2.jpg');
+}
+#weapon3 {
+  background-image: url('../images/weapon3.jpg');
+}
+#weapon4 {
+  background-image: url('../images/weapon4.jpg');
+}
+#weapon5 {
+  background-image: url('../images/weapon5.jpg');
+}
+#weaponhidden {
+  background-image: url('../images/envelope.jpg');
+  border-color: #ecce80;
+}
+
+/* Rooms */
+#room0 {
+  background-image: url('../images/room0.jpg');
+}
+#room1 {
+  background-image: url('../images/room1.jpg');
+}
+#room2 {
+  background-image: url('../images/room2.jpg');
+}
+#room3 {
+  background-image: url('../images/room3.jpg');
+}
+#room4 {
+  background-image: url('../images/room4.jpg');
+}
+#room5 {
+  background-image: url('../images/room5.jpg');
+}
+#room6 {
+  background-image: url('../images/room6.jpg');
+}
+#room7 {
+  background-image: url('../images/room7.jpg');
+}
+#room8 {
+  background-image: url('../images/room8.jpg');
+}
+#roomhidden {
+  background-image: url('../images/envelope.jpg');
+  border-color: #ecce80;
+}
+
+#area { /* This the large content area */
+  position: relative;
+  background-color: #eeeee0; /* light Cream */
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+  padding-left: 28px;
+  padding-right: 28px;
+  width: 944px;
+  height: 110%;
+  box-shadow: 0px 0px 60px #bdbc98;
+}
+.attempts {
+  float: right;
+  width: 150px;
+  margin-right: 40px;
+  margin-top: -10px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #9c4d25; /* dark red */
+  font-size: 18px;
+  background-color: #e2e1c7; /* dark Cream */
+  border: 6px solid #e2e1c7; /* dark Cream */
+}
+.card {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 18px;
+  text-align: center;
+  line-height: 410px;
+  letter-spacing: -0.5px;
+  color: #eeeee0;
+  display: inline-block;
+  position: relative;
+  background-color: #ffffff;
+  z-index: 3;
+  width: 140px;
+  height: 240px;
+  margin: 5px;
+  box-shadow: 0px 0px 60px #bdbc98;
+  border: 2px solid #ffffff;
+}
+.card:hover {
+  border: 2px solid #737267;
+}
+.card-guessed {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 12.5px;
+  z-index: 4;
+  text-align: center;
+  line-height: 320px;
+  letter-spacing: -0.5px;
+  color: #eeeee0;
+  display: inline-block;
+  position: relative;
+  background-color: #ffffff;
+  background-size: 110px 189px;
+  width: 110px;
+  height: 189px;
+  margin: 5px;
+  box-shadow: 0px 0px 60px #bdbc98;
+  border: 2px solid #ffffff;
+}
+.card-answers {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 18px;
+  text-align: center;
+  line-height: 410px;
+  letter-spacing: -0.5px;
+  color: #eeeee0;
+  display: inline-block;
+  position: relative;
+  background-color: #ffffff;
+  width: 140px;
+  height: 240px;
+  margin: 5px;
+  box-shadow: 0px 0px 60px #bdbc98;
+  border: 2px solid #ffffff;
+}
+.choices {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 50px;
+}
+.choices-correct {
+  position: relative;
+  display: inline-block;
+  width: 550px;
+  float: right;
+  margin-bottom: 0px;
+}
+#glass {
+  background-image: url('../images/mglass.png');
+  background-repeat: no-repeat;
+  background-position: -150px -100px;
+  width: 450px;
+  height: 500px;
+  margin-top: -250px;
+}
+.header {
+  position: relative;
+  z-index: 2;
+  background-color: #4e4c3d; /* brown */
+  width: 102%; /* Hack to fix the header by the scrollbar */
+  margin-left: -2%; /* Hack to fix the header by the scrollbar */
+  height: 220px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
+  box-shadow: 0px 0px 20px #4e4c3d;
+}
