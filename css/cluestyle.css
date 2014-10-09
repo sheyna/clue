@@ -267,13 +267,25 @@ li.questions { /* the questions under the <ol> */
   float: right;
   margin-bottom: 0px;
 }
+.cardPicked { /* card the user selects */
+  border: 2px solid #e48d68;
+}
+.cardPicked:hover { /* card the user selects */
+  border: 2px solid #e48d68;
+}
+.cardGray {
+  opacity: 0.2;
+}
 #glass { /* magnifying class in the upper left of browser */
-  background-image: url('../images/mglass.png');
+  background-image: url('../images/magglass.png');
   background-repeat: no-repeat;
-  background-position: -150px -100px;
+  -ms-transform: rotate(25deg); /* IE 9 */
+  -webkit-transform: rotate(25deg); /* Chrome, Safari, Opera */
+  transform: rotate(25deg);
   width: 450px;
-  height: 500px;
-  margin-top: -250px;
+  height: 800px;
+  margin-top: -330px;
+  margin-left: -120px;
 }
 .header { /* Brown masthead display */
   position: relative;
