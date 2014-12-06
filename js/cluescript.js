@@ -1,12 +1,12 @@
 // ------------THE CARDS:------------
 // Set up the cards
 function CardList(list, cardTitle, card2ndClass) {
-  this.list = list; // card IDs
-  this.cardTitle = cardTitle; // card titles
+  this.list = list; // Card IDs
+  this.cardTitle = cardTitle; // Card titles
   this.card2ndClass = card2ndClass; // Additional card class
-  this.output = ""; // the "" prevents undetermined errors
+  this.output = ""; // The "" prevents undetermined errors
 
-  this.createHTML = function() {  // makes the cards from each object
+  this.createHTML = function() {  // Makes the cards from each object
     for (var i = 0; i < this.list.length; i++) {
     this.output += '<li class="card' + ' ' + card2ndClass + '" \
       id="' + this.list[i] + '" title="' + this.cardTitle[i] + '\
@@ -15,19 +15,19 @@ function CardList(list, cardTitle, card2ndClass) {
   };
 }
 
-// the suspect "who" cards:
+// The suspect "who" cards:
 var who = new CardList(["person0", "person1",
   "person2", "person3", "person4", "person5"],
   ["Mr. Green", "Mrs. Peacock", "Prof. Plum",
   "Miss Scarlet", "Col. Mustard", "Mrs. White"], "person");
 
-// the weapon "what" cards:
+// The weapon "what" cards:
 var what = new CardList(["weapon0", "weapon1",
   "weapon2", "weapon3", "weapon4", "weapon5"],
   ["Dagger", "Rope", "Candlestick",
   "Revolver", "Wrench", "Lead Pipe"], "weapon");
 
-// the room "where" cards:
+// The room "where" cards:
 var where = new CardList(["room0", "room1", "room2",
   "room3", "room4", "room5", "room6", "room7", "room8"],
   ["Dining Room", "Kitchen", "Ballroom",
@@ -41,14 +41,14 @@ where.createHTML();
 
 // ------------THE ANSWERS/JUDGING USER GUESSES:------------
 
-// Sets up answers
+// Sets up the answers
 var whoNumber, whatNumber, whereNumber;
 
 whoNumber = Math.floor(Math.random() * who.list.length);
 whatNumber = Math.floor(Math.random() * what.list.length);
 whereNumber = Math.floor(Math.random() * where.list.length);
 
-// Sets up players: 1.) user and 2.) computer answers:
+// Sets up the players: 1.) user and 2.) computer answers:
 function Player(who, what, where, whoTitle, whatTitle, whereTitle) {
   this.who = who;
   this.what = what;
@@ -212,7 +212,7 @@ var createAnswerCards = function() {
 // Stores html for individual guess cards:
 var whoGuessPrintOut, whatGuessPrintOut, whereGuessPrintOut;
 
-// Function declaration to creates HTML for all individual guess cards:
+// Function declaration to create HTML for all individual guess cards:
 var createGuessCards = function() {
   whoGuessPrintOut = answerGuessDisplay("card-guessed", user.who, user.whoTitle, user.whoTitle);
   whatGuessPrintOut = answerGuessDisplay("card-guessed", user.what, user.whatTitle, user.whatTitle);
@@ -222,7 +222,7 @@ var createGuessCards = function() {
 // Counter for number of user's guess attempts:
 var numberOfAttempts = 1; // Is added to when user clicks "Guess Again"
 
-// Function declaration to creates and print HTML for entire answer page display:
+// Function declaration to create and print HTML for entire answer page display:
 var printAnswersGuesses = function() {
   $('.choices').prepend('<ol class="answerDisplay"><div class="choices-correct">\
     <div class="attempts">Attempts:\
@@ -266,13 +266,11 @@ var showAnswersAgainButton = function() {
 };
 
 // GUESS AGAIN IF-ELSE LOOPs:
-// Guess again where loop:
-var guessWhereLoop = function() {
-  if (!whereRight) {
-    guessWhere(); // shows where display
-    showAnswersAgainButton(); // shows answer button; hides all others
-  }
-}; // End guessWhereLoop
+// Guess again where:
+var guessWhereAgain = function() {
+  guessWhere(); // shows where display
+  showAnswersAgainButton(); // shows answer button; hides all others
+}; // End guessWhereAgain
 
 // Guess again what loop:
 var guessWhatLoop = function() {
@@ -283,7 +281,7 @@ var guessWhatLoop = function() {
     guessWhat(); // shows what display
     showAnswersAgainButton(); // shows answer button; hides all others
   } else {
-    guessWhereLoop(); // launches Where loop
+    guessWhereAgain(); // launches Where loop
   }
 }; // End guessWhatLoop
 
@@ -376,6 +374,6 @@ $('button.guess-again').on('click', function() {
       guessWhatLoop(); // Allows user to guess again "What"
     });
   $('button.guessAgainRooms').on('click', function() {
-      guessWhereLoop(); // Allows user to guess again "Where"
+      guessWhereAgain(); // Allows user to guess again "Where"
     });
 }); // End Guess Again Loop
